@@ -1,0 +1,428 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+ul,
+ol,
+li {
+    list-style: none
+}
+a {
+    text-decoration: none;
+    color: #222;
+}
+body {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background: #E5E5E5;
+    color: #000;
+}
+.container {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: 1s;
+}
+.container.active{
+    opacity: 1;
+    visibility: visible;
+}
+.overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    background: url("../img/bg01.png") no-repeat center center / cover;
+    opacity: 1;
+    visibility: visible;
+    transition: 0.5s;
+}
+.overlay.active{
+    opacity: 0;
+    visibility: hidden;
+}
+
+#canvas {
+    animation: fadezoom 1.5s linear both;
+}
+
+#canvas :active {
+    cursor: url('../img/ID2.png'), auto;
+}
+
+.layout .layout01,
+.layout .layout02,
+.layout .layout03,
+.layout .layout04 {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0);
+    pointer-events: none;
+}
+
+.layout .layout01 .card,
+.layout .layout02 .card,
+.layout .layout03 .card,
+.layout .layout04 .card {
+    position: fixed;
+    top: 50%;
+    right: 3.5%;
+    width: 400px;
+    max-width: 90%;
+    background: rgba(0, 0, 0, 0);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    border-radius: 1em;
+    padding: 1.7em;
+    pointer-events: auto;
+}
+
+.layout .layout01 .card .close,
+.layout .layout02 .card .close,
+.layout .layout03 .card .close,
+.layout .layout04 .card .close {
+    position: absolute;
+    top: 0;
+    right: -10px;
+    padding: 1.2em 1.5em;
+    z-index: 2;
+    /* cursor: pointer; */
+}
+
+.layout .layout01 .card .close a,
+.layout .layout02 .card .close a,
+.layout .layout03 .card .close a,
+.layout .layout04 .card .close a {
+    pointer-events: none;
+}
+
+.topButtons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    margin-top: 2.5rem;
+}
+
+.topButtons li a button {
+    padding: 0.5em 0.8em;
+    /* background: #5878ab; */
+    background: rgba(255, 255, 255, 0.5);
+    color: #2e2e2e;
+    border-radius: 0.5em;
+    border: 0;
+    /* cursor: pointer; */
+    outline: none;
+    font-family: "samsungOneKoreanOTF 700";
+    width: 300px;
+    font-size: 18px;
+    margin-right: 40px;
+}
+
+header {
+    width: 100%;
+}
+
+/* logo */
+.logo {
+    position: absolute;
+    top: 4%;
+    left: 2%;
+    z-index: 1;
+}
+
+.logo img {
+    width: 100px;
+}
+
+#con01 img,
+#con02 img,
+#con03 img {
+    width: 300px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+}
+
+/* 메인 텍스트 */
+.title {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 2%;
+    text-align: left;
+}
+
+.title h1 {
+    font-family: "samsungOneKoreanOTF 300";
+    font-size: 17px;
+}
+
+.title p {
+    font-family: "samsungOneKoreanOTF 700";
+    font-size: 37px;
+}
+
+.close img {
+    width: 50px;
+}
+
+/* 스크롤 gif */
+.scroll {
+    position: fixed;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.scroll img {
+    width: 38px;
+}
+
+.scroll div {
+    font-family: "samsungOneKoreanOTF 300";
+    font-size: 12px;
+    color: #1e1e1e;
+}
+
+/* footer */
+footer {
+    position: fixed;
+    right: 2%;
+    bottom: 4%;
+    text-align: right;
+}
+
+footer p {
+    font-family: "samsungOneKoreanOTF 300";
+    font-size: 10px;
+    line-height: 2;
+    color: rgba(46, 46, 46, 0.5);
+}
+
+/* 애니메이션  */
+.ani-box {
+    width: 800px;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 58%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transition: 0.5s;
+}
+.ani-box.active{
+    opacity: 0;
+    visibility: hidden;
+}
+.ani-img img {
+    width: 190px;
+    opacity: 0;
+    animation: fadein 1s ease forwards 2s;
+}
+
+.ani-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 5%;
+    color: #4b4b4b;
+}
+
+.ani-text h1 {
+    font-family: "samsungOneKoreanOTF 300";
+    font-size: 25px;
+    opacity: 0;
+    animation: fadein 1s ease forwards 2s;
+}
+
+.ani-text h2 {
+    font-family: "samsungOneKoreanOTF 400";
+    font-size: 70px;
+    opacity: 0;
+    animation: fadein 1s ease forwards 2s;
+    line-height: 50px;
+}
+
+/*             svg 애니메이션             */
+#logomain {
+    zoom: 0.8;
+    animation: fill 2s ease forwards 1s;
+    margin: 5% 0;
+}
+
+#logomain path {
+    stroke-width: 2px;
+    opacity: 0;
+    animation: line 1s ease forwards;
+}
+
+#logomain path:nth-child(1) {
+    stroke-dasharray: 370;
+    stroke-dashoffset: 370;
+}
+
+#logomain path:nth-child(2) {
+    stroke-dasharray: 204;
+    stroke-dashoffset: 204;
+}
+
+#logomain path:nth-child(3) {
+    stroke-dasharray: 204;
+    stroke-dashoffset: 204;
+}
+
+#logomain path:nth-child(4) {
+    stroke-dasharray: 449;
+    stroke-dashoffset: 449;
+}
+
+#logomain path:nth-child(5) {
+    stroke-dasharray: 314;
+    stroke-dashoffset: 314;
+}
+
+#logomain path:nth-child(6) {
+    stroke-dasharray: 461;
+    stroke-dashoffset: 461;
+}
+
+#logomain path:nth-child(7) {
+    stroke-dasharray: 404;
+    stroke-dashoffset: 404;
+}
+
+#logomain path:nth-child(8) {
+    stroke-dasharray: 337;
+    stroke-dashoffset: 337;
+}
+
+#logomain path:nth-child(9) {
+    stroke-dasharray: 540;
+    stroke-dashoffset: 540;
+}
+
+#logomain path:nth-child(10) {
+    stroke-dasharray: 350;
+    stroke-dashoffset: 350;
+}
+
+#logomain path:nth-child(11) {
+    stroke-dasharray: 331;
+    stroke-dashoffset: 331;
+}
+
+@keyframes line {
+    to {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes fill {
+    from {
+        fill: transparent;
+    }
+
+    to {
+        fill: #4b4b4b;
+    }
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadezoom {
+    0% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(0.85);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media(max-width: 1024px) {
+    .ani-box {
+        zoom: 0.7;
+    }
+
+    footer {
+        display: none;
+    }
+
+    .title {
+        left: 50%;
+        transform: translateX(-50%);
+        top: 15%;
+    }
+}
+
+@media (max-width:430px) {
+    .ani-box {
+        zoom: 0.4;
+    }
+
+    .ani-box {
+        left: 50%;
+    }
+
+    .logo {
+        top: 2%;
+    }
+
+    .logo img {
+        width: 50px;
+    }
+
+    .gnb li a {
+        font-size: 10px;
+    }
+
+    .gnb li:nth-child(1) a {
+        font-size: 10px;
+    }
+
+    .title {
+        top: 20%;
+    }
+
+    .title h1 {
+        font-size: 10px;
+    }
+
+    .title p {
+        font-size: 20px;
+    }
+}
